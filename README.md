@@ -72,14 +72,18 @@ import "@whalerice/ui/globals.css"
 
 ### 다른 프로젝트에서 설치
 
-프로젝트 루트 `.npmrc`:
+이 레포 루트 [.npmrc](.npmrc)에는 **레지스트리만** 두었습니다(커밋 안전).
+
+인증(토큰)은 **각자의 사용자 홈** `~/.npmrc`에만 넣는 것을 권장합니다. pnpm이 프로젝트 `.npmrc`와 머지합니다.
+
+`~/.npmrc` 예시:
 
 ```ini
 @whalerice:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+//npm.pkg.github.com/:_authToken=ghp_xxxxxxxx
 ```
 
-`GITHUB_TOKEN` 대신 `read:packages` 권한이 있는 GitHub PAT를 넣어도 됩니다.
+**설치**에는 `read:packages`가 있는 PAT면 됩니다.
 
 ```bash
 pnpm add @whalerice/ui
@@ -92,8 +96,14 @@ Next.js 앱에서는 `next.config`에 `transpilePackages: ["@whalerice/ui"]` 를
 1. [packages/ui/package.json](packages/ui/package.json)에서 **`version`을 올린 뒤** 커밋·푸시합니다.
 2. GitHub에서 **Release**를 만들거나, Actions에서 **Publish @whalerice/ui to GitHub Packages** 워크플로를 **workflow_dispatch**로 실행합니다.
 
-로컬에서 게시할 때도 동일한 레지스트리·토큰 설정이 필요합니다:
+로컬에서 게시할 때는 `~/.npmrc`에 **`write:packages`**(및 `read:packages`)가 있는 PAT를 넣고:
 
 ```bash
 pnpm publish:ui
 ```
+
+레포 `.npmrc`에 `${ENV}`로 토큰을 두면, 변수가 비어 있을 때 pnpm이 치환에 실패하고 **`401 Unauthorized`**로 이어질 수 있습니다. 토큰은 홈 `~/.npmrc`에 직접 두는 편이 안정적입니다.
+
+조직(예: `whalerice`) 저장소라면 PAT에 **SSO 승인**(GitHub → 토큰 설정에서 “Configure SSO” → Authorize)이 필요한 경우가 많습니다. 클래식 토큰은 `write:packages` 권한과 저장소 접근을 확인하세요.
+
+`--no-git-checks`가 스크립트에 포함되어 있어, 커밋되지 않은 변경이 있어도 로컬에서 게시할 수 있습니다.
