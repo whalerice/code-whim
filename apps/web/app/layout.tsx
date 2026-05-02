@@ -1,9 +1,9 @@
 import { Geist_Mono, Noto_Sans } from "next/font/google"
 
-import "@workspace/ui/globals.css"
+import "@whalerice/ui/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { TooltipProvider } from "@workspace/ui/components/tooltip"
-import { cn } from "@workspace/ui/lib/utils"
+import { TooltipProvider } from "@whalerice/ui/components/tooltip"
+import { cn } from "@whalerice/ui/lib/utils"
 
 const notoSans = Noto_Sans({ subsets: ["latin"], variable: "--font-sans" })
 

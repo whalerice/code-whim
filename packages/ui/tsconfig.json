@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@workspace/ui/*": ["./src/*"]
+      "@whalerice/ui/*": ["./src/*"]
     }
   },
   "include": ["src"],
