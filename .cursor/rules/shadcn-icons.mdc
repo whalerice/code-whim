@@ -1,0 +1,15 @@
+---
+description: shadcn/ui 아이콘 — data-icon, 프로젝트 iconLibrary, 크기 클래스 금지
+globs:
+  - "**/packages/ui/**/*.tsx"
+  - "**/apps/**/*.tsx"
+alwaysApply: false
+---
+
+# shadcn/ui — Icons
+
+상세는 `.claude/skills/shadcn/rules/icons.md`.
+
+- **`iconLibrary`:** `pnpm dlx shadcn@latest info`(또는 `components.json` 주변 설정)으로 확인. `lucide-react` 고정 가정 금지.
+- **Button 내 아이콘:** `data-icon="inline-start"` 또는 `data-icon="inline-end"`. 컴포넌트 내 아이콘에 `size-4`/`w-4 h-4` 등 크기 클래스 금지(사용자가 명시 요청한 경우만 예외).
+- **아이콘 전달:** 문자열 키가 아니라 컴포넌트 객체 `icon={CheckIcon}`.

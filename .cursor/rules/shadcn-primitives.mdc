@@ -1,0 +1,16 @@
+---
+description: shadcn/ui base vs radix — asChild vs render, 트리거 합성
+globs:
+  - "**/packages/ui/**/*.tsx"
+  - "**/apps/**/*.tsx"
+alwaysApply: false
+---
+
+# shadcn/ui — Base vs Radix
+
+`pnpm dlx shadcn@latest info`의 `base` 필드로 primitives 확인. 상세는 `.claude/skills/shadcn/rules/base-vs-radix.md`.
+
+- **Radix:** 트리거·닫기 합성에 `asChild` (예: `DialogTrigger asChild` + `Button`).
+- **Base UI 스타일:** 대응 props는 `render` (예: `render={<Button />}`). Raw `div`로 한 겹 더 감싸지 말 것.
+- **base 전용:** 비-button 요소로 바꿀 때 `nativeButton={false}` 등 문서 패턴 준수.
+- Select, ToggleGroup, Slider, Accordion 등은 `base`와 `radix`에서 API가 다르므로 추측하지 말고 위 rule 파일·공식 docs를 볼 것.

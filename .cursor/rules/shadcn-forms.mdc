@@ -1,0 +1,18 @@
+---
+description: shadcn/ui 폼 — FieldGroup·Field, InputGroup, ToggleGroup, 검증 속성
+globs:
+  - "**/packages/ui/**/*.tsx"
+  - "**/apps/**/*.tsx"
+alwaysApply: false
+---
+
+# shadcn/ui — Forms & inputs
+
+상세는 `.claude/skills/shadcn/rules/forms.md`.
+
+- **레이아웃:** `FieldGroup` + `Field`. 폼을 raw `div` + `space-y-*` 만으로 짜지 말 것.
+- **InputGroup:** `InputGroupInput` / `InputGroupTextarea` 사용. 안에 raw `Input`/`Textarea` 금지.
+- **입력 안 버튼:** `InputGroup` + `InputGroupAddon`.
+- **2–7개 선택:** `ToggleGroup` + `ToggleGroupItem`. 활성 상태를 수동 `Button` 루프로 흉내 내지 말 것.
+- **체크/라디오 묶음:** `FieldSet` + `FieldLegend`.
+- **검증:** `Field`에 `data-invalid`, 컨트롤에 `aria-invalid`. 비활성은 `Field`에 `data-disabled`, 컨트롤에 `disabled`.

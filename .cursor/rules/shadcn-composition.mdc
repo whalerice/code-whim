@@ -1,0 +1,19 @@
+---
+description: shadcn/ui 구성 — Group·Card·오버레이 Title·Tabs·Avatar·Alert·Empty 등
+globs:
+  - "**/packages/ui/**/*.tsx"
+  - "**/apps/**/*.tsx"
+alwaysApply: false
+---
+
+# shadcn/ui — Composition
+
+상세는 `.claude/skills/shadcn/rules/composition.md`.
+
+- **Item은 항상 Group 안:** `SelectItem`→`SelectGroup`, `DropdownMenuItem`→`DropdownMenuGroup`, `CommandItem`→`CommandGroup` 등.
+- **오버레이 제목:** Dialog/Sheet/Drawer는 `*Title` 필수. 시각적으로 숨기려면 `className="sr-only"`.
+- **Card:** `CardHeader`/`CardTitle`/`CardDescription`/`CardContent`/`CardFooter` 패턴. 내용만 `CardContent`에 몰지 말 것.
+- **Button 로딩:** `isPending`/`isLoading` props 없음 → `Spinner` + `data-icon` + `disabled` 조합.
+- **Tabs:** `TabsTrigger`는 반드시 `TabsList` 안.
+- **Avatar:** `AvatarFallback` 필수.
+- **콜아웃:** `Alert`. 빈 상태: `Empty`. 토스트: `sonner`의 `toast()`. 구분선: `Separator`. 로딩 placeholder: `Skeleton`. 뱃지: `Badge`.

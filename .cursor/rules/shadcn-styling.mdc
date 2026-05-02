@@ -1,0 +1,21 @@
+---
+description: shadcn/ui 스타일·Tailwind — 시맨틱 토큰, gap, cn(), 오버레이 z-index 금지
+globs:
+  - "**/packages/ui/**/*.{tsx,css}"
+  - "**/apps/**/*.{tsx,css}"
+alwaysApply: false
+---
+
+# shadcn/ui — Styling
+
+상세 예시·반례는 `.claude/skills/shadcn/rules/styling.md`, `.claude/skills/shadcn/customization.md` 참고.
+
+- **색:** `bg-primary`, `text-muted-foreground` 등 시맨틱 토큰. `bg-blue-500` 같은 raw 색 금지. 상태/지표는 `Badge` variant·`text-destructive` 등.
+- **변형:** `Button` 등은 `variant`/`size` 우선. 클래스로 테두리·배경을 흉내 내지 말 것.
+- **className:** 레이아웃 위주. 컴포넌트 색·타이포를 덮어쓰지 말 것.
+- **간격:** `space-x-*` / `space-y-*` 금지 → `flex` + `gap-*`, 세로는 `flex flex-col gap-*`.
+- **정사각형:** `w-*`+`h-*` 대신 `size-*`.
+- **말줄임:** `truncate` 사용 (`overflow-hidden text-ellipsis whitespace-nowrap` 장황하게 쓰지 말 것).
+- **다크 모드:** 수동 `dark:` 색 덮어쓰기 금지 → 토큰 사용.
+- **조건부 클래스:** `cn()` 사용, 긴 템플릿 리터럴 삼항 지양.
+- **오버레이:** Dialog, Sheet, Popover 등에 수동 `z-index` 금지.
