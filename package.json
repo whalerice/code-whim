@@ -8,7 +8,8 @@
     "lint": "turbo lint",
     "format": "turbo format",
     "typecheck": "turbo typecheck",
-    "publish:ui": "pnpm --filter @whalerice/ui publish --no-git-checks"
+    "publish:ui": "pnpm --filter @whalerice/ui publish --no-git-checks",
+    "clean": "turbo clean && rm -rf node_modules .turbo"
   },
   "devDependencies": {
     "@workspace/eslint-config": "workspace:*",
